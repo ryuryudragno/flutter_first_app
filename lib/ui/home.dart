@@ -14,13 +14,65 @@ class ScaffoldExample extends StatelessWidget {
         title: Text("Scaffold"),
         centerTitle: true,
         backgroundColor: Colors.amberAccent.shade200,
-        actions: [
+        actions: <Widget>[
           IconButton(onPressed: ()=> debugPrint("aa"), icon: Icon(Icons.email)),
           IconButton(onPressed: _tapButton, icon: Icon(Icons.access_alarm))
         ],
       ),
-      body: Center(
-        child: Text("Hello Again"),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.lightGreen,
+        child: Icon(Icons.call_missed),
+        onPressed: ()=> debugPrint("Hello"),
+
+      ),
+      bottomNavigationBar: BottomNavigationBar(items: [
+        BottomNavigationBarItem(icon: Icon(Icons.account_circle),title: Text("First")),
+        BottomNavigationBarItem(icon: Icon(Icons.ac_unit),title: Text("Second")),
+        BottomNavigationBarItem(icon: Icon(Icons.access_alarm_outlined),title: Text("Third")),
+
+      ],onTap: (int index) => debugPrint("Tapped Item : $index"),),
+      backgroundColor: Colors.redAccent.shade100,
+      body: Container(
+        alignment: Alignment.center,
+
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            CustomButton()
+
+            // InkWell(
+            //   child: Text("Tap me",
+            //   style: TextStyle(fontSize: 23.4),),
+            //   onTap: ()=> debugPrint("aaa"),
+            // )
+          ],
+        )
+      ),
+    );
+  }
+}
+
+class CustomButton extends StatelessWidget {
+  const CustomButton({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: (){
+        final snackBar = SnackBar(content: Text("Hello Again"),
+        backgroundColor: Colors.cyanAccent.shade100,);
+
+        Scaffold.of(context).showSnackBar(snackBar);
+      },
+
+      child: Container(
+        padding: EdgeInsets.all(10.0),
+        decoration: BoxDecoration(
+          color: Colors.pinkAccent,
+          borderRadius: BorderRadius.circular(8.0),
+
+        ),
+        child: Text("Button"),
       ),
     );
   }
