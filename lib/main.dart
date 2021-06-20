@@ -7,7 +7,7 @@ import 'ui/home.dart';
 // }
 void main() {
   runApp(new MaterialApp(
-    home: BillSplitter(),
+    home: QuizApp(),
   ));
 }
 
