@@ -4,6 +4,85 @@ import 'package:flutter_first_app/model/question.dart';
 import 'package:flutter_first_app/util/hexcolor.dart';
 
 
+class MovieListView extends StatelessWidget {
+  final List movies = [
+    "Titanic",
+    "Blade Runner",
+    "Avatar",
+    "Blade Runner",
+    "The wolf of wall street",
+    "Rambo",
+    "Rambo",
+    "Rambo",
+
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Movies"),
+        backgroundColor: Colors.blueGrey.shade900,
+      ),
+      backgroundColor: Colors.blueGrey.shade400,
+      body: ListView.builder(
+          itemCount: movies.length,
+          itemBuilder: (BuildContext context,int index){
+            return Card(
+              elevation: 4.5,
+              color: Colors.white,
+              child: ListTile(
+                leading: CircleAvatar(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      // color: Colors.blue,
+                      borderRadius: BorderRadius.circular(13.9)
+                    ),
+                    child: Text("H"),
+                  ),
+                ),
+                trailing: Text("..."),
+                title: Text(movies[index]),
+                subtitle: Text("sub"),
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (context)=> MovieListViewDetails()));
+                },
+                // onTap: () => debugPrint("Movie name: ${movies[index]}"),
+
+              ),
+            );
+          },
+      ),
+    );
+  }
+}
+
+class MovieListViewDetails extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Movies"),
+        backgroundColor: Colors.blueGrey.shade900,
+      ),
+      body:Center(
+        child: Container(
+          child: RaisedButton(
+            child: Text("Go back"),
+            onPressed: (){
+              Navigator.pop(context);
+            },
+          ),
+        ),
+      )
+    );
+  }
+}
+
+
+
+
 class QuizApp extends StatefulWidget {
   const QuizApp({Key? key}) : super(key: key);
 
